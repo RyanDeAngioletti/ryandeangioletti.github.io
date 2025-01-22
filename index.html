@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 25px 20%;
+            background-color: #333;
+        }
+
+        .headshot {
+            width: 200px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .link {
+            height: 30px;
+            width: auto;
+            margin-right: 10px;
+    	    transition: all .2s ease;
+        }        
+	
+	.link:hover {
+    	   transition: all .2s ease;
+ 	   transform:scale(1.1);
+        }
+
+	.links-container {
+	    display: flex;
+	    justify-content: center;
+	    gap: 20%; /* Adjusts spacing between images */
+	    margin: 10px;
+	}
+        
+	header split {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+
+        header p1 {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        banner {
+            display: flex;
+            align-items: center;
+        }
+
+        banner carousel {
+            display: flex;
+            overflow: hidden;
+            position: center;
+            width: 100%;
+        }
+
+        banner img {
+            width: 25%;
+            flex-shrink: 0;
+            transition: transform 1s ease-in-out;
+        }
+
+        banner h1 {
+            font-size: 3.5rem;
+	    margin: 50px 20% 0 20%;
+        }  
+
+        section {
+            color: black;
+            display: flex;
+            align-items: center;
+            margin: 50px 20%;
+            background-color: white;
+    	    transition: all .2s ease;
+        }
+
+        section:hover {
+    	   transition: all .2s ease;
+ 	   transform:scale(1.1);
+        }
+
+        section img {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 20px;
+   	    display: block;
+    	    overflow: hidden;
+        }
+        
+        section iframe {
+            width: 560px;
+            height: 315px;
+            border-radius: 10px;
+            margin: 0 20px;
+   	    display: block;
+    	    overflow: hidden;
+        }
+
+        section split {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        section h1 {
+            font-size: 3.5rem;
+	    margin: 10px 0;
+        }  
+      
+	section p1 {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        contact {
+            color: black;
+            display: block;
+            align-items: center;
+            padding: 10px 20%;
+            background-color: white;
+        }
+
+        contact h2 {
+            font-size: 1.5rem;
+        }  
+      
+	contact p1 {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f4f4f4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<header>
+    <img src="headshot.jpg" alt="Headshot" class="headshot">
+    <split>
+        <h1>Ryan De Angioletti</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>
+
+    <div class="links-container">
+
+<a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+    <img src="LinkedIn Logo.png" alt="LinkedIn" class="link">
+</a>
+
+<a href="ryan.deangioletti@gmail.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+    <img src="Gmail Logo.png" alt="Gmail" class="link">
+</a>
+
+<a href="https://www.youtube.com/@RyanDeAngioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+    <img src="YouTube Logo.png" alt="Youtube" class="link">
+</a>
+
+</div>
+
+</split>
+</header>
+
+
+
+<banner> 
+    <carousel>
+        <img src="battlebots1.jpg" alt="Project 1 Image 1">
+        <img src="battlebots2.jpg" alt="Project 1 Image 2">
+        <img src="battlebots3.jpg" alt="Project 1 Image 3">
+        <img src="battlebots4.jpg" alt="Project 1 Image 4">
+        <img src="battlebots5.jpg" alt="Project 1 Image 5">
+        <!-- Duplicate the images for seamless looping -->
+        <img src="battlebots1.jpg" alt="Project 1 Image 1 Duplicate">
+        <img src="battlebots2.jpg" alt="Project 1 Image 2 Duplicate">
+        <img src="battlebots3.jpg" alt="Project 1 Image 3 Duplicate">
+        <img src="battlebots4.jpg" alt="Project 1 Image 4 Duplicate">
+        <img src="battlebots5.jpg" alt="Project 1 Image 5 Duplicate">
+    </carousel>
+</banner>
+
+
+<script>
+    document.querySelectorAll('carousel').forEach(carousel => {
+        let idx = 0;
+        const images = carousel.querySelectorAll('img');
+        const totalImages = (images.length / 2) + 1; // Original image count (not counting duplicates)
+
+        setInterval(() => {
+            idx++;
+            if (idx === totalImages) {
+                // Reset position to the start of the first image set seamlessly
+                carousel.style.transition = 'none';
+                idx = 0;
+                images.forEach((img, i) => {
+                    img.style.transform = `translateX(-${idx * 100}%)`;
+                });
+                // Allow a tiny delay before reapplying the transition
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 1s ease-in-out';
+                }, 50);
+            } else {
+                images.forEach((img, i) => {
+                    img.style.transform = `translateX(-${idx * 100}%)`;
+                });
+            }
+        }, 3000);
+    });
+</script>
+
+
+<banner>
+    <h1>Projects</h1>
+</banner>
+
+
+<section>
+    <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+
+    <img src="headshot.jpg" alt="Headshot">
+    
+<split>
+        <h1>Anomali</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>    
+</split>
+</a>
+</section>
+
+<section>
+    <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+    <split>
+        <h1>Chonkiv</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>    
+</split>
+
+<iframe src="https://www.youtube.com/embed/-nnmUJJjSlo?autoplay=1&mute=1&controls=0$loop=0">
+</iframe>
+
+</a>
+</section>
+
+<section>
+    <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+
+    <img src="headshot.jpg" alt="Headshot">
+    <split>
+        <h1>RoboJackets' 25th Anniversary</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>    
+</split>
+</a>
+</section>
+
+<section>
+    <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+    <split>
+        <h1>Georgia Tech</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>    
+</split>
+    <img src="headshot.jpg" alt="Headshot">
+</a>
+</section>
+
+<section>
+    <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+
+    <img src="headshot.jpg" alt="Headshot">
+    <split>
+        <h1>Theatre - Set Design</h1>
+        
+	<p1>Mechanical engineer with a strong passion for rapid prototyping and design.  Eager to leverage my experience from John Deere, Georgia Tech, and Battlebots toward a summer 2025 internship with a focus on mechanical design, testing and product development.</p1>    
+</split>
+</a>
+</section>
+
+<contact>
+    <h2>Contact</h2>
+    <div>
+    <p>Feel free to reach out! You can find me on <a href="https://linkedin.com/in/ryan-deangioletti" target="_blank">LinkedIn</a> or email me at <a href="mailto:ryan.deangioletti@gmail.com">ryan.deangioletti@gmail.com</a>.</p>
+</div>
+</contact>
+
+
+<footer>
+    <p>&copy; 2024 Ryan De Angioletti. All Rights Reserved.</p>
+</footer>
+
+
+</body>
+</html>
